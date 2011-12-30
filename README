@@ -1,0 +1,1 @@
+To install simply move the space_mouse.vim file to the ~/.vim/colors directory and change the colorscheme setting in the ~/.vimrc file to "space_mice".  Enjoy!
