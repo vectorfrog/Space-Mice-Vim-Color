@@ -1,43 +1,65 @@
 " Vim color file
-" Maintainer:   Kevin Wilson 
-" Last Change:  $Id: kevin.vim, 2011/11/11 
-" URL:          
-" License:      GNU GPL <http://www.gnu.org/licenses/gpl.html>
+" Extension of David Schweikert's Delek color scheme
+" Maintainer:	Kevin Wilson
+" Last Change:	2019 Feb 28
 
 hi clear
-set background=dark
-if exists("syntax_on")
-  syntax reset
+
+let g:colors_name = "space_mice"
+
+"List of Colors:
+"| Blue       | Red          | Green     | Yellow | Grey      | Brown |
+"| ---------  | -------      | -----     | ------ | ----      | ----- |
+"| Cyan       | Red          | DarkGreen | Yellow | Grey      | Brown |
+"| LightBlue  | DarkRed      | SeaGreen  | Gold   | LightGrey |       |
+"| Blue       | LightMagenta |           |        |           |       |
+"| DarkBlue   | DarkMagenta  |           |        |           |       |
+"| Light Cyan | LightRed     |           |        |           |       |
+
+" Normal should come first
+hi Normal     guifg=Black  guibg=White
+hi Cursor     guifg=bg     guibg=fg
+hi lCursor    guifg=NONE   guibg=Cyan
+
+" Note: we never set 'term' because the defaults for B&W terminals are OK
+hi DiffAdd    ctermbg=LightBlue    guibg=LightBlue
+hi DiffChange ctermbg=LightMagenta guibg=LightMagenta
+hi DiffDelete ctermfg=Blue	   ctermbg=LightCyan gui=bold guifg=Blue guibg=LightCyan
+hi DiffText   ctermbg=Red	   cterm=bold gui=bold guibg=Red
+hi Directory  ctermfg=DarkBlue	   guifg=Blue
+hi ErrorMsg   ctermfg=White	   ctermbg=DarkRed  guibg=Red	    guifg=White
+hi FoldColumn ctermfg=DarkBlue	   ctermbg=Grey     guibg=Grey	    guifg=DarkBlue
+hi Folded     ctermbg=Grey	   ctermfg=DarkBlue guibg=LightGrey guifg=DarkBlue
+hi IncSearch  cterm=reverse	   gui=reverse
+hi LineNr     ctermfg=Brown	   guifg=Brown
+hi ModeMsg    cterm=bold	   gui=bold
+hi MoreMsg    ctermfg=DarkGreen    gui=bold guifg=SeaGreen
+hi NonText    ctermfg=Blue	   gui=bold guifg=gray guibg=white
+hi Pmenu      guibg=LightBlue
+hi PmenuSel   ctermfg=White	   ctermbg=DarkBlue  guifg=White  guibg=DarkBlue
+hi Question   ctermfg=DarkGreen    gui=bold guifg=SeaGreen
+if &background == "light"
+    hi Search     ctermfg=NONE	   ctermbg=Yellow guibg=Yellow guifg=NONE
+else
+    hi Search     ctermfg=Black	   ctermbg=Yellow guibg=Yellow guifg=Black
 endif
-let g:colors_name = "space mice"
+hi SpecialKey ctermfg=DarkBlue	   guifg=Blue
+hi StatusLine cterm=bold	   ctermbg=blue ctermfg=yellow guibg=gold guifg=blue
+hi StatusLineNC	cterm=bold	   ctermbg=blue ctermfg=black  guibg=gold guifg=blue
+hi Title      ctermfg=DarkMagenta  gui=bold guifg=Magenta
+hi VertSplit  cterm=reverse	   gui=reverse
+hi Visual     ctermbg=NONE	   cterm=reverse gui=reverse guifg=Grey guibg=fg
+hi VisualNOS  cterm=underline,bold gui=underline,bold
+hi WarningMsg ctermfg=DarkRed	   guifg=Red
+hi WildMenu   ctermfg=Black	   ctermbg=Yellow    guibg=Yellow guifg=Black
 
-hi Normal ctermbg=233	 
-hi LineNr ctermfg=232 ctermbg=234
-hi String ctermfg=37
-hi Comment	 ctermfg=237
-hi Constant	 ctermfg=14			   cterm=none 
-hi Identifier ctermfg=6						 
-hi Statement  ctermfg=22			   cterm=bold
-hi PreProc	 ctermfg=10						 
-hi Type		 ctermfg=2						
-hi Special	 ctermfg=12					
-hi Error					ctermbg=9
-hi Todo		 ctermfg=4	ctermbg=3	
-hi Directory  ctermfg=2			
-hi StatusLine ctermfg=11 ctermbg=12 cterm=none
-hi Conditional ctermfg=106
-hi Search				ctermbg=3			
-hi Number ctermfg=127
+" syntax highlighting
+hi Comment    cterm=NONE ctermfg=DarkRed     gui=NONE guifg=red2
+hi Constant   cterm=NONE ctermfg=DarkGreen   gui=NONE guifg=green3
+hi Identifier cterm=NONE ctermfg=DarkCyan    gui=NONE guifg=cyan4
+hi PreProc    cterm=NONE ctermfg=DarkMagenta gui=NONE guifg=magenta3
+hi Special    cterm=NONE ctermfg=LightRed    gui=NONE guifg=deeppink
+hi Statement  cterm=bold ctermfg=Blue	     gui=bold guifg=blue
+hi Type	      cterm=NONE ctermfg=Blue	     gui=bold guifg=blue
 
-" Python Specific
-hi pythonInclude ctermfg=130
-hi pythonFunction ctermfg=25
-hi pythonComment ctermfg=237
-hi pythonBuiltin ctermfg=184
-
-" Django Specific
-hi djangoArgument ctermfg=130
-hi djangoTagBlock ctermfg=25
-hi djangoStatement ctermfg=130
-hi djangoFilter ctermfg=88
-hi djangoVarBlock ctermfg=27
+" javascript syntax
